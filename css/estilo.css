@@ -1,0 +1,116 @@
+section {
+  width: 60%;
+  height: 400px;
+  float: left;
+  position: absolute;
+  top: 15%;
+  left: 300px;
+  background-color: silver
+}
+
+section h1 {
+  margin: 0px 0px 40px 0px;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 24pt;
+}
+
+section h2 {
+  width:100%;
+  text-align: center;
+  float:left;
+  margin-bottom:50px;
+
+}
+
+#win {
+  width: 100%;
+  height: 300px;
+  background-color: rgba(5, 212, 5, 0.876);
+  display: none;
+  z-index: 88888;
+  position:absolute;
+  top:10%;
+  left:0px;
+}
+#win h1 {
+  text-align: center;
+  margin-top:40px;
+  z-index:222222;
+}
+#btnPass {
+  float: right;
+  margin: 100px 100px 0px 0px;
+}
+
+.list-item {
+  width:99.40%;
+  border: 2px solid rgba(0, 0, 0, 0);
+  z-index: 8888;
+  float: left;
+  margin-right:500px;
+  transition: .1s;
+  list-style-type: upper-roman;
+}
+.list-item:hover {
+  color:green;
+}
+a {
+  color:black;
+  float:left;
+  text-decoration: none;
+}
+
+ol {
+  display: none;
+  list-style-type: upper-roman;
+}
+
+#btn {
+  float: right;
+  margin: 0px 100px 0px 0px;
+  display: none;
+  margin-top:10px;
+}
+
+#btnIni {
+  margin: 100px 0px 0px 330px;
+  width: 20%;
+  height: 50px;
+  font-size: 20pt;
+}
+
+#timerM {
+  width:70px;
+  display: block;
+  float:left;
+  margin: 0px 0px 0px 10px;
+  margin-left:10px;
+  margin-bottom:0;
+  margin-right: 0px;
+  margin-top:0;
+  display: none;
+}
+#timerS {
+  width:60px;
+  float:left;
+  margin:0;
+  display:none;
+}
+#fase {
+  float:left;
+  margin: 0px 0px 0px 253px;
+  font-weight:800;
+  font-size:14pt;
+  display:none;
+}
+#timeR {
+  float:left;
+  margin-left:20px;
+
+}
+@keyframes initialEffect {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}

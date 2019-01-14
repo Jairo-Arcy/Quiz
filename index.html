@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/estilo.css" />
+   
+  </head>
+
+  <body>
+      <section>
+        <h1>Quiz</h1>
+        <p id="timerM" ></p>
+        <p id="timerS"></p>
+        <p id="fase"></p>
+        <h2></h2>
+        <button class="btnInicio" id="btnIni" onclick="startG()">Começar</button>
+        <ol id="order">
+          <a href="#"  class="list-item" onclick="selected(0)" onkeyup ="insertB(event)"><li></li></a>
+          <a href="#"  class="list-item"  onclick="selected(1)" onkeyup ="insertB(event)"><li></li></a>
+          <a href="#"  class="list-item"  onclick="selected(2)" onkeyup ="insertB(event)"><li></li></a>
+        </ol>
+        <button id="btn" onclick="trueQuest()">Confirmar</button>
+        <div id="win" onkeyup ="insertB(event)">
+          <h1 class="msg"></h1>
+          <p id="timeR"></p>
+          <p id="record"></p>
+          <button id="btnPass" onclick="falseAlt()"></button>
+        </div>
+      </section>
+      <script src="src/script.js"></script>
+  </body>
+
+</html>
