@@ -20,7 +20,13 @@ var timerM = document.querySelector('#timerM'),
   timeR = document.querySelector('#timeR'),
   record = document.querySelector('#record'),
   reset = false,
-  q = 0;
+  score = document.querySelector('#pontos'),
+  btn2 = document.querySelector('#ins'),
+  btn3 = document.querySelector('#git'),
+  winscore = document.querySelector('#score');
+  s = false,
+  pont = 0;
+q = 0;
 
 function game() {
   if (phase === 0) {
@@ -31,26 +37,30 @@ function game() {
     listElement.style.display = 'block';
     timerM.style.display = 'block';
     timerS.style.display = 'block';
+    score.style.display = 'block';
     timeStart = 1;
     stage.style.display = 'block';
-    stage.innerText = "Fase 1";
+    stage.innerText = "Questão 1";
+    scoreAdd(1);
   }
   if (phase === 2) {
     act2();
     listElement.style.display = 'block';
     timerM.style.display = 'block';
     timerS.style.display = 'block';
+    score.style.display = 'block';
     timeStart = 1;
     stage.style.display = 'block';
-    stage.innerText = "Fase 2";
+    stage.innerText = "Questão 2";
     selected();
+    scoreAdd(1);
   }
   if (reset === true) {
-    time(1);
     ok = 0;
     listLi.style.border = '2px solid rgba(0, 0, 0, 0)';
     listLi.previousElementSibling.style.border = '2px solid rgba(0, 0, 0, 0)';
     listLi.nextElementSibling.style.border = '2px solid rgba(0, 0, 0, 0)';
+    time(1)
   }
 
 }
@@ -62,6 +72,8 @@ function start() {
 
 function startG() {
   btnIni.style.display = 'none';
+  btn2.style.display = 'none';
+  btn3.style.display = 'none';
   phase = 1;
   var s = 0;
   var m = 0;
@@ -106,17 +118,27 @@ function time(op) {
   }
 }
 
-
-function notLook() {
-  listLi.previousElementSibling.style.border = '2px solid rgba(0, 0, 0, 0)';
-  listLi.nextElementSibling.style.border = '2px solid rgba(0, 0, 0, 0)';
-  listLi.style.border = '2px solid rgba(0, 0, 0, 0)';
+function scoreAdd(op) {
+  var p = 0;
+  if (op === 1) {
+    score.innerText = 'Pontos: ' + pont;
+    if (s === true) {
+      if ((minutes != 0) || (seconds != 0)) {
+        if (minutes >= 1 || seconds >= 11) {
+          p += 10;
+          pont += p;
+          score.innerText = 'Pontos: ' + pont;
+        } else if ((seconds < 11) && (minutes === 0)) {
+          p += 30;
+          pont += p;
+          score.innerText = 'Pontos: ' + pont;
+        }
+      }
+    }
+  }
 }
 
 function selected(alt) {
-  if (alt != 0) {
-    alter = false;
-  }
   if (alt < 3) {
     insert = true;
   }
@@ -194,13 +216,17 @@ function selected(alt) {
 }
 
 function insertB(event) {
-  if (insert == true) {
+  if (insert === true) {
     event.target.value = insert;
     if (event.keyCode === 13) {
-      trueQuest();
+      if (alter === true) {
+        trueQuest(1)
+      } else {
+        trueQuest(0);
+      }
     }
   }
-  if (phase == 1) {
+  if (phase === 1) {
     event.target.value = selected();
     if (event.keyCode === 49) {
       selected(0);
@@ -209,20 +235,42 @@ function insertB(event) {
     } else if (event.keyCode === 50) {
       selected(1);
       insert = true;
+      alter = false
     } else if (event.keyCode === 51) {
       selected(2);
       insert = true;
+      alter = false;
+    }
+  }
+  if (phase === 2) {
+    event.target.value = selected();
+    if (event.keyCode === 49) {
+      selected(0);
+      insert = true;
+      alter = true;
+    } else if (event.keyCode === 50) {
+      selected(1);
+      insert = true;
+      alter = false
+    } else if (event.keyCode === 51) {
+      selected(2);
+      insert = true;
+      alter = false;
     }
   }
   if (alter === true) {
     if (event.keyCode === 13) {
-      falseAlt();
+      trueQuest(1);
+    } else if (alter === false) {
+      if (event.keyCode === 13) {
+        trueQuest(0);
+      }
     }
   }
 }
 
-function act1(item) {
-  listItem = ['Madrid', 'Africa', 'Berlim'];
+function act1() {
+  listItem = ['A) Madrid', 'B) Africa', 'C) Berlim'];
   caption.innerText = 'Qual é A capital da Espanha??';
   listLi.previousElementSibling.innerHTML = `${listItem[0]}`;
   listLi.innerHTML = `${listItem[1]}`;
@@ -230,7 +278,7 @@ function act1(item) {
 }
 
 function act2() {
-  listItem = ['Presidente dos Estados Unidos', 'Primeiro Ministro da Inglaterra', 'Rei da França'];
+  listItem = ['A) Presidente dos Estados Unidos', 'B) Primeiro Ministro da Inglaterra', 'C) Rei da França'];
   caption.innerText = 'Quem foi Winston Churchill??';
   listLi.previousElementSibling.innerHTML = `${listItem[0]}`;
   listLi.innerHTML = `${listItem[1]}`;
@@ -245,9 +293,15 @@ function showBtn() {
 
   }
 }
-
-function trueQuest() {
+/*Resposta correta ou não*/ 
+function trueQuest(evnt) {
+  if (evnt === 1) {
+    alter = true;
+  } else if (evnt === 0) {
+    alter = false;
+  }
   if (alter === true) {
+    s = true;
     window.clearInterval(intervalo);
     reset = true;
     winBlock.style.display = 'block';
@@ -262,7 +316,6 @@ function trueQuest() {
     stage.style.display = 'none';
     timeR.innerText = "Tempo " + "0" + minutes + ":" + seconds + "s";
     q = 1;
-
   } else if (alter === false) {
     reset = true;
     window.clearInterval(intervalo);
@@ -280,18 +333,26 @@ function trueQuest() {
   }
 }
 
-function falseAlt() {
+function falseAlt(evt) {
   if (alter === false) {
     winBlock.style.display = 'none';
     game();
+    if (evt.keyCode === 13) {
+      winBlock.style.display = 'none';
+      game();
+    }
   }
   if (alter === true) {
     winBlock.style.display = 'none';
     phase = 2;
     game();
+    if (evt.keyCode === 13) {
+      winBlock.style.display = 'none';
+      phase = 2;
+      game();
+    }
   }
 
 }
-
 window.onload = time;
 game();

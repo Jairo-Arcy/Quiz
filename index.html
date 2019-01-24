@@ -7,31 +7,35 @@
     <title>Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/estilo.css" />
-   
+
   </head>
 
   <body>
-      <section>
-        <h1>Quiz</h1>
-        <p id="timerM" ></p>
-        <p id="timerS"></p>
-        <p id="fase"></p>
-        <h2></h2>
-        <button class="btnInicio" id="btnIni" onclick="startG()">Começar</button>
-        <ol id="order">
-          <a href="#"  class="list-item" onclick="selected(0)" onkeyup ="insertB(event)"><li></li></a>
-          <a href="#"  class="list-item"  onclick="selected(1)" onkeyup ="insertB(event)"><li></li></a>
-          <a href="#"  class="list-item"  onclick="selected(2)" onkeyup ="insertB(event)"><li></li></a>
-        </ol>
-        <button id="btn" onclick="trueQuest()">Confirmar</button>
-        <div id="win" onkeyup ="insertB(event)">
-          <h1 class="msg"></h1>
-          <p id="timeR"></p>
-          <p id="record"></p>
-          <button id="btnPass" onclick="falseAlt()"></button>
-        </div>
-      </section>
-      <script src="src/script.js"></script>
+    <section>
+      <h1>Quiz</h1>
+      <p id="timerM"></p>
+      <p id="timerS"></p>
+      <p id="fase"></p>
+      <p id="pontos"></p>
+      <h2></h2>
+      <button id="ins"><a href="instrucao.html">Instrução</a></button>
+      <button class="btnInicio" id="btnIni" onclick="startG()">Começar</button>
+      <button id="git"><a href="https://github.com/Jairo-Arcy" target="_blank" id="l">GitHub</a></button>
+      <ol id="order">
+        <a href="#" class="list-item" onclick="selected(0)" onkeyup="insertB(event)"></a>
+        <a href="#" class="list-item" onclick="selected(1)" onkeyup="insertB(event)"></a>
+        <a href="#" class="list-item" onclick="selected(2)" onkeyup="insertB(event)"></a>
+      </ol>
+      <button id="btn" onclick="trueQuest()">Confirmar</button>
+      <div id="win">
+        <h1 class="msg"></h1>
+        <p id="timeR"></p>
+        <p id="record"></p>
+        <p id="score"></p>
+        <button id="btnPass" onclick="falseAlt()"></button>
+      </div>
+    </section>
+    <script src="src/script.js"></script>
   </body>
 
 </html>

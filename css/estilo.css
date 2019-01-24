@@ -1,3 +1,20 @@
+html {
+  background-image: url(../img/wall.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width:100%;
+  height: 100%;
+}
+#btnBackI {
+  float:right;
+  color:black;
+  margin-top:100px;
+  margin-right:80px;
+  margin-bottom:0px;
+
+}
+
 section {
   width: 60%;
   height: 400px;
@@ -5,22 +22,28 @@ section {
   position: absolute;
   top: 15%;
   left: 300px;
-  background-color: silver
+  background-color: silver;
 }
 
 section h1 {
+  opacity:0;
   margin: 0px 0px 40px 0px;
   padding: 0;
   width: 100%;
   text-align: center;
   font-size: 24pt;
+  animation: initialEffect .5s linear .4s 1 forwards;
+  font-family:'Courier New', Courier, monospace
 }
 
 section h2 {
+  opacity:0;
   width:100%;
   text-align: center;
   float:left;
   margin-bottom:50px;
+  animation: initialEffect .5s linear 1s 1 forwards;
+  font-family:'Courier New', Courier, monospace
 
 }
 
@@ -32,12 +55,13 @@ section h2 {
   z-index: 88888;
   position:absolute;
   top:10%;
-  left:0px;
+  left:0px
 }
 #win h1 {
   text-align: center;
   margin-top:40px;
   z-index:222222;
+  font-family:'Courier New', Courier, monospace
 }
 #btnPass {
   float: right;
@@ -47,40 +71,79 @@ section h2 {
 .list-item {
   width:99.40%;
   border: 2px solid rgba(0, 0, 0, 0);
-  z-index: 8888;
+  z-index:999999;
   float: left;
   margin-right:500px;
   transition: .1s;
-  list-style-type: upper-roman;
+  list-style-type: circle
 }
+li {
+  float:left;
+  width:100%;
+  margin-left:20px;
+}
+
 .list-item:hover {
-  color:green;
+  color:green
 }
 a {
   color:black;
   float:left;
   text-decoration: none;
+  margin-bottom:10px;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+#l {
+  color:black;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 ol {
-  display: none;
-  list-style-type: upper-roman;
+  display: none
 }
 
 #btn {
   float: right;
   margin: 0px 100px 0px 0px;
   display: none;
-  margin-top:10px;
+  margin-top:10px
 }
 
 #btnIni {
-  margin: 100px 0px 0px 330px;
+  opacity:0;
+  transform: translate(250px, 100px);
   width: 20%;
   height: 50px;
   font-size: 20pt;
+  animation: initialEffect .5s linear 2s 1 forwards;
+  transition: all .5s;
 }
-
+#btnIni:hover {
+  color:green;
+}
+#ins {
+  opacity:0;
+  transform: translate(130px, 117px);
+  animation: initialEffect .5s linear 2s 1 forwards;
+  transition: all .5s;
+  height: 25px;
+}
+#ins:hover {
+  color:green;
+}
+#git {
+  opacity:0;
+  transform: translate(-100px, 117px);
+  width: 9%;
+  height: 25px;
+  animation: initialEffect .5s linear 2s 1 forwards;
+  transition: all .5s;
+  float:right;
+}
+#git:hover {
+  color:green;
+}
 #timerM {
   width:70px;
   display: block;
@@ -90,24 +153,34 @@ ol {
   margin-bottom:0;
   margin-right: 0px;
   margin-top:0;
-  display: none;
+  display: none
 }
 #timerS {
   width:60px;
   float:left;
   margin:0;
-  display:none;
+  display:none;  
 }
 #fase {
   float:left;
-  margin: 0px 0px 0px 253px;
+  margin: 0px 0px 0px 230px;
   font-weight:800;
   font-size:14pt;
-  display:none;
+  display:none
 }
 #timeR {
   float:left;
-  margin-left:20px;
+  margin-left:350px;
+}
+#pontos {
+  display: none;
+  float:left;
+  transform:translate(210px, -12px);
+}
+#score {
+  display:none;
+  float: left;
+  transform: translate(-74px,-35px);
 
 }
 @keyframes initialEffect {
